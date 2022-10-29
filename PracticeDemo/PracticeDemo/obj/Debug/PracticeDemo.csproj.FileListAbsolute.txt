@@ -29,3 +29,7 @@ C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\bin\Debug\ru\
 C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentAddingWindow.g.cs
 C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentAddingWindow.baml
+C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentEditingWindow.g.cs
+C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentEditingWindow.baml
+C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentDeletingWindow.g.cs
+C:\Users\sveta\source\repos\PracticeDemo\PracticeDemo\PracticeDemo\obj\Debug\EquipmentDeletingWindow.baml

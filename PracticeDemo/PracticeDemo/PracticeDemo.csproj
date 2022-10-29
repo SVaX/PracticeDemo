@@ -83,6 +83,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EquipmentDeletingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentEditingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainMenuWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +113,12 @@
     </Compile>
     <Compile Include="EquipmentAddingWindow.xaml.cs">
       <DependentUpon>EquipmentAddingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentDeletingWindow.xaml.cs">
+      <DependentUpon>EquipmentDeletingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentEditingWindow.xaml.cs">
+      <DependentUpon>EquipmentEditingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EquipmentModel.Context.cs">
       <AutoGen>True</AutoGen>

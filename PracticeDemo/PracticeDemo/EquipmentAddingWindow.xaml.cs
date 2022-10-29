@@ -21,8 +21,6 @@ namespace PracticeDemo
     {
         public static PracticeFiveEntities _context = new PracticeFiveEntities();
         private Equipment _newEquipment = new Equipment();
-        private const int _SmallestProdIdNumber = 10000000;
-        private const int _BiggestProdIdNumber = 99999999;
         public EquipmentAddingWindow()
         {
             InitializeComponent();

@@ -27,12 +27,12 @@
             <Border BorderBrush="Black" BorderThickness="2" Grid.RowSpan="3" Margin="5">
                 <TextBlock x:Name="InfoTxtBlock" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" MaxWidth="180" Text="{Binding InfoText}" TextWrapping="Wrap" Style="{StaticResource TextStyle}"></TextBlock>
             </Border>
-            <Button x:Name="EmployeeListButton" Grid.Column="1" Grid.Row="0" Height="50" Width="320" Content="Перейти к списку сотрудников" Style="{StaticResource TextStyle}" Click="EmployeeListButton_Click" GotMouseCapture="EmployeeListButton_GotMouseCapture"></Button>
-            <Button x:Name="ProductionAreaListButton" Grid.Column="1" Grid.Row="1" Height="50" Width="320" Content="Перейти к списку произв. участков" Style="{StaticResource TextStyle}" Click="ProductionAreaListButton_Click" GotMouseCapture="ProductionAreaListButton_GotMouseCapture"></Button>
-            <Button x:Name="WordEquipmentGettingButton" Grid.Column="1" Grid.Row="2" Height="50" Width="320" Content="Получить word список оборудования" Style="{StaticResource TextStyle}" Click="WordEquipmentGettingButton_Click" GotMouseCapture="WordEquipmentGettingButton_GotMouseCapture"></Button>
-            <Button x:Name="EquipmentAddingButton" Grid.Column="2" Grid.Row="0" Height="50" Width="320" Content="Добавление оборудования" Style="{StaticResource TextStyle}" Click="EquipmentAddingButton_Click" GotMouseCapture="EquipmentAddingButton_GotMouseCapture"></Button>
-            <Button x:Name="EquipmentEditingButton" Grid.Column="2" Grid.Row="1" Height="50" Width="320" Content="Изменение оборудования" Style="{StaticResource TextStyle}" Click="EquipmentEditingButton_Click" GotMouseCapture="EquipmentEditingButton_GotMouseCapture"></Button>
-            <Button x:Name="EquipmentDeletingButton" Grid.Column="2" Grid.Row="2" Height="50" Width="320" Content="Удаление оборудования" Style="{StaticResource TextStyle}" Click="EquipmentDeletingButton_Click" GotMouseCapture="EquipmentDeletingButton_GotMouseCapture"></Button>
+            <Button x:Name="EmployeeListButton" Grid.Column="1" Grid.Row="0" Height="50" Width="320" Content="Перейти к списку сотрудников" Style="{StaticResource TextStyle}" Click="EmployeeListButton_Click" MouseEnter="EmployeeListButton_GotMouseCapture"></Button>
+            <Button x:Name="ProductionAreaListButton" Grid.Column="1" Grid.Row="1" Height="50" Width="320" Content="Перейти к списку произв. участков" Style="{StaticResource TextStyle}" Click="ProductionAreaListButton_Click" MouseEnter="ProductionAreaListButton_GotMouseCapture"></Button>
+            <Button x:Name="WordEquipmentGettingButton" Grid.Column="1" Grid.Row="2" Height="50" Width="320" Content="Получить word список оборудования" Style="{StaticResource TextStyle}" Click="WordEquipmentGettingButton_Click" MouseEnter="WordEquipmentGettingButton_GotMouseCapture"></Button>
+            <Button x:Name="EquipmentAddingButton" Grid.Column="2" Grid.Row="0" Height="50" Width="320" Content="Добавление оборудования" Style="{StaticResource TextStyle}" Click="EquipmentAddingButton_Click" MouseEnter="EquipmentAddingButton_GotMouseCapture"></Button>
+            <Button x:Name="EquipmentEditingButton" Grid.Column="2" Grid.Row="1" Height="50" Width="320" Content="Изменение оборудования" Style="{StaticResource TextStyle}" Click="EquipmentEditingButton_Click" MouseEnter="EquipmentEditingButton_GotMouseCapture"></Button>
+            <Button x:Name="EquipmentDeletingButton" Grid.Column="2" Grid.Row="2" Height="50" Width="320" Content="Удаление оборудования" Style="{StaticResource TextStyle}" Click="EquipmentDeletingButton_Click" MouseEnter="EquipmentDeletingButton_GotMouseCapture"></Button>
         </Grid>
     </Grid>
 </Window>

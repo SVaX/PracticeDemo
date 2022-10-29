@@ -51,12 +51,16 @@ namespace PracticeDemo
 
         private void EquipmentEditingButton_Click(object sender, RoutedEventArgs e)
         {
-
+            EquipmentEditingWindow window = new EquipmentEditingWindow();
+            window.Show();
+            this.Close();
         }
 
         private void EquipmentDeletingButton_Click(object sender, RoutedEventArgs e)
         {
-
+            EquipmentDeletingWindow window = new EquipmentDeletingWindow();
+            window.Show();
+            this.Close();
         }
         private void WordEquipmentGettingButton_Click(object sender, RoutedEventArgs e)
         {
@@ -114,32 +118,32 @@ namespace PracticeDemo
 
         private void EmployeeListButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Переход к окну просмотра списка сотрудников";
         }
 
         private void ProductionAreaListButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Переход к окну просмотра списка производственных участков";
         }
 
         private void WordEquipmentGettingButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Генерирует Word документ с информацией о имеющемся в системе оборудовании";
         }
 
         private void EquipmentAddingButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Переход к окну добавления нового оборудования";
         }
 
         private void EquipmentEditingButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Переход к окну изменения уже существующего оборудования";
         }
 
         private void EquipmentDeletingButton_GotMouseCapture(object sender, MouseEventArgs e)
         {
-
+            InfoTxtBlock.Text = "Переход к окну удаления оборудования";
         }
     }
 }
