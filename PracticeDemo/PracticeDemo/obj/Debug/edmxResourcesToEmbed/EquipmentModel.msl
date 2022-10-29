@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PracticeFiveModelContainer" CdmEntityContainer="PracticeFiveEntities">
+    <EntitySetMapping Name="Checkup">
+      <EntityTypeMapping TypeName="PracticeFiveModel.Checkup">
+        <MappingFragment StoreEntitySet="Checkup">
+          <ScalarProperty Name="Checkup_id" ColumnName="Checkup_id" />
+          <ScalarProperty Name="Checkup_date" ColumnName="Checkup_date" />
+          <ScalarProperty Name="Id_equipment" ColumnName="Id_equipment" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="PracticeFiveModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+          <ScalarProperty Name="Nsp" ColumnName="Nsp" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="PracticeFiveModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Equipment_id" ColumnName="Equipment_id" />
+          <ScalarProperty Name="Equipment_name" ColumnName="Equipment_name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id_production_area" ColumnName="Id_production_area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FailedEquipment">
+      <EntityTypeMapping TypeName="PracticeFiveModel.FailedEquipment">
+        <MappingFragment StoreEntitySet="FailedEquipment">
+          <ScalarProperty Name="Failed_equipment_id" ColumnName="Failed_equipment_id" />
+          <ScalarProperty Name="Rejection_date" ColumnName="Rejection_date" />
+          <ScalarProperty Name="Id_equipment" ColumnName="Id_equipment" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductionArea">
+      <EntityTypeMapping TypeName="PracticeFiveModel.ProductionArea">
+        <MappingFragment StoreEntitySet="ProductionArea">
+          <ScalarProperty Name="Production_area_id" ColumnName="Production_area_id" />
+          <ScalarProperty Name="Area_name" ColumnName="Area_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

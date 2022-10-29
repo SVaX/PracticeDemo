@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PracticeFiveModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Checkup">
+          <Key>
+            <PropertyRef Name="Checkup_id" />
+          </Key>
+          <Property Name="Checkup_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Checkup_date" Type="datetime" Nullable="false" />
+          <Property Name="Id_equipment" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Result" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_employee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_id" />
+          </Key>
+          <Property Name="Employee_id" Type="int" Nullable="false" />
+          <Property Name="Nsp" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Equipment_id" />
+          </Key>
+          <Property Name="Equipment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Equipment_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Id_production_area" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FailedEquipment">
+          <Key>
+            <PropertyRef Name="Failed_equipment_id" />
+          </Key>
+          <Property Name="Failed_equipment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rejection_date" Type="datetime" Nullable="false" />
+          <Property Name="Id_equipment" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Id_employee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductionArea">
+          <Key>
+            <PropertyRef Name="Production_area_id" />
+          </Key>
+          <Property Name="Production_area_id" Type="int" Nullable="false" />
+          <Property Name="Area_name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Checkup__Id_empl__2C3393D0">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checkup" Type="Self.Checkup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="Checkup">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checkup__Id_equi__2B3F6F97">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checkup" Type="Self.Checkup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Equipment_id" />
+            </Principal>
+            <Dependent Role="Checkup">
+              <PropertyRef Name="Id_equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Id_pr__267ABA7A">
+          <End Role="ProductionArea" Type="Self.ProductionArea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionArea">
+              <PropertyRef Name="Production_area_id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="Id_production_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FailedEqu__Id_em__300424B4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FailedEquipment" Type="Self.FailedEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="FailedEquipment">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FailedEqu__Id_eq__2F10007B">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FailedEquipment" Type="Self.FailedEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Equipment_id" />
+            </Principal>
+            <Dependent Role="FailedEquipment">
+              <PropertyRef Name="Id_equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PracticeFiveModelContainer">
+          <EntitySet Name="Checkup" EntityType="Self.Checkup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FailedEquipment" EntityType="Self.FailedEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionArea" EntityType="Self.ProductionArea" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Checkup__Id_empl__2C3393D0" Association="Self.FK__Checkup__Id_empl__2C3393D0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Checkup" EntitySet="Checkup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checkup__Id_equi__2B3F6F97" Association="Self.FK__Checkup__Id_equi__2B3F6F97">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Checkup" EntitySet="Checkup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Id_pr__267ABA7A" Association="Self.FK__Equipment__Id_pr__267ABA7A">
+            <End Role="ProductionArea" EntitySet="ProductionArea" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FailedEqu__Id_em__300424B4" Association="Self.FK__FailedEqu__Id_em__300424B4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="FailedEquipment" EntitySet="FailedEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FailedEqu__Id_eq__2F10007B" Association="Self.FK__FailedEqu__Id_eq__2F10007B">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FailedEquipment" EntitySet="FailedEquipment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PracticeFiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Checkup">
+          <Key>
+            <PropertyRef Name="Checkup_id" />
+          </Key>
+          <Property Name="Checkup_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Checkup_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id_equipment" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_employee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Checkup__Id_empl__2C3393D0" FromRole="Checkup" ToRole="Employee" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK__Checkup__Id_equi__2B3F6F97" FromRole="Checkup" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_id" />
+          </Key>
+          <Property Name="Employee_id" Type="Int32" Nullable="false" />
+          <Property Name="Nsp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Checkup" Relationship="Self.FK__Checkup__Id_empl__2C3393D0" FromRole="Employee" ToRole="Checkup" />
+          <NavigationProperty Name="FailedEquipment" Relationship="Self.FK__FailedEqu__Id_em__300424B4" FromRole="Employee" ToRole="FailedEquipment" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Equipment_id" />
+          </Key>
+          <Property Name="Equipment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_production_area" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Checkup" Relationship="Self.FK__Checkup__Id_equi__2B3F6F97" FromRole="Equipment" ToRole="Checkup" />
+          <NavigationProperty Name="ProductionArea" Relationship="Self.FK__Equipment__Id_pr__267ABA7A" FromRole="Equipment" ToRole="ProductionArea" />
+          <NavigationProperty Name="FailedEquipment" Relationship="Self.FK__FailedEqu__Id_eq__2F10007B" FromRole="Equipment" ToRole="FailedEquipment" />
+        </EntityType>
+        <EntityType Name="FailedEquipment">
+          <Key>
+            <PropertyRef Name="Failed_equipment_id" />
+          </Key>
+          <Property Name="Failed_equipment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rejection_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id_equipment" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_employee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__FailedEqu__Id_em__300424B4" FromRole="FailedEquipment" ToRole="Employee" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK__FailedEqu__Id_eq__2F10007B" FromRole="FailedEquipment" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="ProductionArea">
+          <Key>
+            <PropertyRef Name="Production_area_id" />
+          </Key>
+          <Property Name="Production_area_id" Type="Int32" Nullable="false" />
+          <Property Name="Area_name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK__Equipment__Id_pr__267ABA7A" FromRole="ProductionArea" ToRole="Equipment" />
+        </EntityType>
+        <Association Name="FK__Checkup__Id_empl__2C3393D0">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checkup" Type="Self.Checkup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="Checkup">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checkup__Id_equi__2B3F6F97">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checkup" Type="Self.Checkup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Equipment_id" />
+            </Principal>
+            <Dependent Role="Checkup">
+              <PropertyRef Name="Id_equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FailedEqu__Id_em__300424B4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FailedEquipment" Type="Self.FailedEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_id" />
+            </Principal>
+            <Dependent Role="FailedEquipment">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Id_pr__267ABA7A">
+          <End Role="ProductionArea" Type="Self.ProductionArea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionArea">
+              <PropertyRef Name="Production_area_id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="Id_production_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FailedEqu__Id_eq__2F10007B">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FailedEquipment" Type="Self.FailedEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Equipment_id" />
+            </Principal>
+            <Dependent Role="FailedEquipment">
+              <PropertyRef Name="Id_equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PracticeFiveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Checkup" EntityType="Self.Checkup" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="FailedEquipment" EntityType="Self.FailedEquipment" />
+          <EntitySet Name="ProductionArea" EntityType="Self.ProductionArea" />
+          <AssociationSet Name="FK__Checkup__Id_empl__2C3393D0" Association="Self.FK__Checkup__Id_empl__2C3393D0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Checkup" EntitySet="Checkup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checkup__Id_equi__2B3F6F97" Association="Self.FK__Checkup__Id_equi__2B3F6F97">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Checkup" EntitySet="Checkup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FailedEqu__Id_em__300424B4" Association="Self.FK__FailedEqu__Id_em__300424B4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="FailedEquipment" EntitySet="FailedEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Id_pr__267ABA7A" Association="Self.FK__Equipment__Id_pr__267ABA7A">
+            <End Role="ProductionArea" EntitySet="ProductionArea" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FailedEqu__Id_eq__2F10007B" Association="Self.FK__FailedEqu__Id_eq__2F10007B">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FailedEquipment" EntitySet="FailedEquipment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PracticeFiveModelContainer" CdmEntityContainer="PracticeFiveEntities">
+          <EntitySetMapping Name="Checkup">
+            <EntityTypeMapping TypeName="PracticeFiveModel.Checkup">
+              <MappingFragment StoreEntitySet="Checkup">
+                <ScalarProperty Name="Checkup_id" ColumnName="Checkup_id" />
+                <ScalarProperty Name="Checkup_date" ColumnName="Checkup_date" />
+                <ScalarProperty Name="Id_equipment" ColumnName="Id_equipment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="PracticeFiveModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+                <ScalarProperty Name="Nsp" ColumnName="Nsp" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="PracticeFiveModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Equipment_id" ColumnName="Equipment_id" />
+                <ScalarProperty Name="Equipment_name" ColumnName="Equipment_name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id_production_area" ColumnName="Id_production_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FailedEquipment">
+            <EntityTypeMapping TypeName="PracticeFiveModel.FailedEquipment">
+              <MappingFragment StoreEntitySet="FailedEquipment">
+                <ScalarProperty Name="Failed_equipment_id" ColumnName="Failed_equipment_id" />
+                <ScalarProperty Name="Rejection_date" ColumnName="Rejection_date" />
+                <ScalarProperty Name="Id_equipment" ColumnName="Id_equipment" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionArea">
+            <EntityTypeMapping TypeName="PracticeFiveModel.ProductionArea">
+              <MappingFragment StoreEntitySet="ProductionArea">
+                <ScalarProperty Name="Production_area_id" ColumnName="Production_area_id" />
+                <ScalarProperty Name="Area_name" ColumnName="Area_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
